@@ -1,0 +1,56 @@
+body 				{ margin: 0; padding: 0; font-family: Verdana, Arial, Helvetica, sans-serif; 
+							font-size: 70.01%; font-weight: normal; color: #000; background: #fff; 
+							border-style: solid; border-width: 0 0 1px 0; border-color: #666;}
+
+a:link 		{text-decoration: none; color:#690; 		font-weight: bold;}
+a:visited	{text-decoration: none; color:#690;  		font-weight: bold;}
+a:hover		{text-decoration: none; color: #9C3;	 font-weight: bold;}
+a:active	{text-decoration: none; color: #360;	 font-weight: bold;}
+
+table 				{width: 100%; margin: 0; font-size: 1.0em; }
+
+table td 			{margin: 0; padding: 0; border: 0; vertical-align: top;}
+h4						{font-weight: bold;		color: #960;	padding:	5px 10px 0px 0px;	}
+p#indent				{padding-left: 15px;}
+
+code					{color: 000;	font-family: Courier, "Courier New", Monaco, monospace;	font-size: 150%;		}	
+
+td#header 			{font-weight: bold; font-size: 150%; background: #C93; padding: 2px 10px 2px 10px; }
+
+td#header a			{color: #fff;  font-weight: normal;}
+
+td#header a:hover 	{color: #000;}
+
+td#header a:active 	{color: #fff;}
+
+td#leftmenu 		{background: #fc6; font-size: 100%; }
+td#leftmenu p		{padding: 0px 10px 5px 10px; }
+
+td#leftmenu a		
+					{display: block; text-decoration: none; margin: 0; border-width: 0 0 1px 0;
+					 border-style: none; 	
+					 border-color: #333; font-weight: bold; color: #000; padding: 5px 10px 5px 10px; }
+td#leftmenu a:hover {color: #000; background: #c93}
+td#leftmenu a:active {color: #000; background: #963}
+
+td#leftmenu div 	{margin: 0; border: 0; padding: 5px 10px 5px 10px; color: #000; }
+td#leftmenu h4			{font-weight: bold;		color: #960;	padding:	5px 10px 0 10px;	}	
+td#leftmenu div.currentpage	
+					{display: block; text-decoration: none; margin: 0; border-width: 0 0 1px 0; 
+					border-style: solid; 
+					border-color: #c93; padding: 5px 10px 5px 10px; font-weight: bold; color: #000; background: #fff; }
+
+
+td#rightcol 		{margin: 0; border: 0; padding: 5px 10px 5px 10px; color: black; background: #fc6; }
+
+td#content 			{font-size: 100%; color: #321; background: #fff; padding: 5px 10px 5px 10px; }
+
+td#footer 			{font-size: 90%; background: #c93; padding: 5px 10px 5px 10px; }
+
+.bg1				{background-color: #960;}
+.bg2				{background-color: #c93;}
+
+td.data				{padding: 2px 5px 2px 5px; border-width: 1px; border-style: solid; border-color: #000;}
+
+dt			{font-weight: bold; 	color: #960;	padding: 6px 6px 0 0px; }
+dd			{font-weight: normal; 	padding: 0px 6px 6px 0px; }
