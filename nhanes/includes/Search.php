@@ -4,11 +4,11 @@ class		Search	{
 
 
 //	members
-public	$variableNameArray;
-public	$variableQueryArray;		//	what variables are we querying about?
-public	$filterArray;				//	what are our filter phrases (tables)?
-public	$chooseCasesArray;			//	what are our filter phrases (data restrictions)? (age > 10)
-public	$tableReferences;				//	
+public	$variableNameArray;     //  what variables are we querying about? e.g., NAME
+public	$variableQueryArray;	//	what variables are we querying about? -- but with the table prefixes, e.g, t1.NAME
+public	$filterArray;			//	what are our relational phrases (tables)? WHERE t1.SEQN = t2.SEQN, etc.
+public	$chooseCasesArray;		//	what are our filter phrases (data restrictions)? (age > 10)
+public	$tableReferences;		//	 FROM bmx AS t2, etc.
 
 //	methods
 
@@ -35,7 +35,7 @@ public	function	GetVariableString( )	{
 	
 public	function	GetFilterString( )	{
 	$r = NULL;
-	$flist = NULL;
+	$flist = [];
 	
 	foreach($this->filterArray as $f)	{ $flist[] = $f;}		
 	foreach($this->chooseCasesArray as $f)	{ $flist[] = $f;}		
@@ -70,15 +70,23 @@ public	function	GetSearch( )	{
 }
 
 
-public	function	GetDescription($theTable)	{
+public	function	GetDescription($theTable, $DBH)	{
 
 	//	assemble a description of the search in the variable $s.			
 	foreach	($this->variableNameArray as $v)	{
-		$row	=	nhanes_getOneRow("SELECT * FROM $theTable WHERE NAME = '".$v."'");
+
+	    $params = [ "v" => $v ];
+		$matchingRows	=	eeps_MySQL_getOneRow($DBH, "SELECT * FROM $theTable WHERE NAME = :v", $params);
+		$row = $matchingRows[0];
 		$oName = $row['NAMEOUT'];
 		$Desc = $row['DESCRIPTION'];
 		$units = $row['UNITS'];
-		$s .= "\n<strong>$oName</strong>: $Desc<br>";
+
+		$unitsPhrase = "";
+		if ($units) {
+		    $unitsPhrase = " ($units)";
+        }
+		$s .= "\n<strong>$oName</strong>: $Desc $unitsPhrase<br>";
 	}	
 				
 	return	$s;

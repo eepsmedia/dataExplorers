@@ -1,8 +1,6 @@
 <?php
 
 $debug = NULL;
-//include('../includes/varsetup1.php');			//	set up variables
-//include('../includes/functions1.php');	//	define mySQL access functions etc
 
 $page_title = "eeps data explorer";
 
