@@ -113,7 +113,7 @@ $insertQ = "INSERT INTO $searchTable (SEARCH, TIME) VALUES ('"
 
 $params = [];
 
-$r	=	eeps_MySQL_getQueryResult($DBH, $insertQ, $params);
+$r	=	eeps_MySQL_doQueryWithoutResult($DBH, $insertQ, $params);
 
 $theSearchID = $DBH->lastInsertId();
 

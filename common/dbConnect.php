@@ -45,7 +45,7 @@ function eeps_MySQL_connect($host, $user, $pass, $dbname)
     //    reportToFile( "In eeps_MySQL_connect");
     try {
         $connectionArgument = "mysql:host=$host;dbname=$dbname;charset=utf8";
-        //  reportToFile( "CONNECTING using:" . $connectionArgument);               //  debug
+
         $DBH = new PDO($connectionArgument, $user, $pass);    // the database handle
         $DBH->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
         $DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -69,13 +69,16 @@ function eeps_MySQL_connect($host, $user, $pass, $dbname)
 
 function eeps_MySQL_doQueryWithoutResult($db, $query, $params)
 {
+    $out = null;
+
     try {
         $sth = $db->prepare($query);    //  $sth = statement handle
-        $sth->execute($params);
+        $out = $sth->execute($params);
     } catch (PDOException $e) {
         error_log("---  eeps MySQL preparation or execution error " . $e->getMessage());
         die();
     }
+    return $out;    //  exit status of command
 }
 
 /**
