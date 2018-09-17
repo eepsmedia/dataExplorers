@@ -1,10 +1,14 @@
-<?php 
+<?php
+
+/**
+ * This is the varsetup1 file for the WEB ACS explorer
+ */
 	session_start( );
 	
 // set up mySQL
-include('../includes/functions1.php');	//	define mySQL access functions etc, moved to varsetup
-//require_once('../connections/acsConnection.php');		//	connect to ACS db. NOTE: be sure path is correct for distribution
 
+include('../includes/functions1.php');	//
+include('../common/dbConnect.php');     //  define mySQL access functiions
 
 require_once('../../../../connections/acsConnection.php');		//	connect to ACS db on eeps site
 

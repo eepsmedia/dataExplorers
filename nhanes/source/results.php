@@ -19,14 +19,11 @@ if (is_numeric($theSampleSize) AND $theSampleSize > 0) {
 }
 
 $params = ["id" => $theID];
-$searches = eeps_MySQL_getOneRow($DBH, "SELECT * FROM $searchTable WHERE ID = :id ", $params);
-
-$row = $searches[0];
+$row = eeps_MySQL_getOneRow($DBH, "SELECT * FROM $searchTable WHERE ID = :id ", $params);
 
 $theSearch = unserialize($row['SEARCH']);
 
 $vararray = $theSearch->variableNameArray;
-
 
 $varListForQuery = $theSearch->GetVariableString();
 $filterForQuery = $theSearch->GetFilterString();
@@ -41,8 +38,7 @@ $tableheader = "\n<tr>";
 foreach ($vararray as $v) {
     $params = ["v" => $v];
 
-    $matchingVariableNames = eeps_MySQL_getOneRow($DBH, "SELECT * FROM $varTable WHERE NAME = :v", $params);
-    $row = $matchingVariableNames[0];
+    $row = eeps_MySQL_getOneRow($DBH, "SELECT * FROM $varTable WHERE NAME = :v", $params);
 
     if ($row) {    //	it was in the list
         $varLabelArray[$v] = $row['NAMEOUT'];

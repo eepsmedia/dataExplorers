@@ -76,8 +76,7 @@ public	function	GetDescription($theTable, $DBH)	{
 	foreach	($this->variableNameArray as $v)	{
 
 	    $params = [ "v" => $v ];
-		$matchingRows	=	eeps_MySQL_getOneRow($DBH, "SELECT * FROM $theTable WHERE NAME = :v", $params);
-		$row = $matchingRows[0];
+		$row	=	eeps_MySQL_getOneRow($DBH, "SELECT * FROM $theTable WHERE NAME = :v", $params);
 		$oName = $row['NAMEOUT'];
 		$Desc = $row['DESCRIPTION'];
 		$units = $row['UNITS'];

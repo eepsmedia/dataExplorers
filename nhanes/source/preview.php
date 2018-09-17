@@ -1,5 +1,5 @@
 <?php
-include('../includes/varsetup1.php');        //	set up variables, defeine functions
+include('../includes/varsetup1.php');        //	set up variables, define functions
 include('../includes/Search.php');        //	define Search class
 
 $page_title = "NHANES data explorer: preview data";
@@ -39,10 +39,9 @@ foreach ($postkeys as $v) {
     $query = "SELECT * FROM $varTable WHERE NAME = :varName";
     $params = ["varName" => $v];
 
-    $arrayOut = eeps_MySQL_getOneRow($DBH, $query, $params);
+    $row = eeps_MySQL_getOneRow($DBH, $query, $params);
 
-    if (count($arrayOut) > 0) {
-        $row = $arrayOut[0];
+    if ($row) {
         $tableNumber = $row['TABLEID'];                //	the numeric table ID to which this variable belongs
         $tableSet[$tableNumber] = true;                //	this table is included in the set of tables
         $varQueryArray[] = "t$tableNumber." . $v;        //	the variable names we use in queries, VARNAME.t3, etc.

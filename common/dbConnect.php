@@ -110,7 +110,12 @@ function eeps_MySQL_getQueryResult($db, $query, $params)
 function eeps_MySQL_getOneRow($db, $query, $params)
 {
     $result = eeps_MySQL_getQueryResult($db, $query . " LIMIT 1", $params);
-    return $result;
+    if (is_array($result)) {
+        if (count($result) > 0) {
+            return $result[0];
+        }
+    }
+    return null;
 }
 
 
@@ -145,8 +150,8 @@ function decodeNHANES($row, $v, $recodeTable, $DBH) {
     $params = ["var" => $v, "raw" => $rawval];
 
     $decodeRow = eeps_MySQL_getOneRow($DBH, $query, $params);
-    if (count($decodeRow)) {
-        $val = $decodeRow[0]['RESULT'];
+    if ($decodeRow) {
+        $val = $decodeRow['RESULT'];
     } else {
         $val = $rawval;
     }
